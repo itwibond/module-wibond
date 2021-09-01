@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Wibond_Wibond
+ *
+ * @copyright  Copyright (c) 2021 Wibond. (https://www.wibond.com.ar/)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Wibond\Wibond\Model\Payment\Wibond">
+        <arguments>
+            <argument name="code" xsi:type="const">Wibond\Wibond\Model\Payment\Wibond::CODE</argument>
+            <argument name="formBlockType" xsi:type="string">Wibond\Wibond\Block\Form</argument>
+            <argument name="infoBlockType" xsi:type="string">Wibond\Wibond\Block\Info</argument>
+            <argument name="valueHandlerPool" xsi:type="object">WibondValueHandlerPool</argument>
+            <argument name="commandPool" xsi:type="object">WibondCommandPool</argument>
+        </arguments>
+    </type>
+    <virtualType name="WibondValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="string">WibondConfigValueHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="WibondConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">WibondGatewayConfig</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="WibondGatewayConfig" type="Wibond\Wibond\Config\Config">
+    </virtualType>
+    <type name="Wibond\Wibond\Config\Config">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="string">Magento\Payment\Gateway\Config\ConfigValueHandler</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Commands infrastructure -->
+    <virtualType name="WibondCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
+        <arguments>
+            <argument name="commands" xsi:type="array" />
+        </arguments>
+    </virtualType>
+
+    <preference for="Wibond\Wibond\Api\Data\PaymentLinkRequestInterface"
+        type="Wibond\Wibond\Model\Data\PaymentLinkRequest"/>
+    <preference for="Wibond\Wibond\Api\Data\PaymentLinkOptionsInterface"
+        type="Wibond\Wibond\Model\Data\PaymentLinkOption"/>
+
+    <!-- Custom log file (/var/log/wibond.log) -->
+    <virtualType name="Wibond\Wibond\Logger\WibondLoggerHandler" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/wibond.log</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Wibond\Wibond\Logger\Logger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="info" xsi:type="object">Wibond\Wibond\Logger\WibondLoggerHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <!-- Custom logger argument injections -->
+    <type name="Wibond\Wibond\Model\Logger">
+        <arguments>
+            <argument name="loggerInterface" xsi:type="object">Wibond\Wibond\Logger\Logger</argument>
+        </arguments>
+    </type>
+
+</config>

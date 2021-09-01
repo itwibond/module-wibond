@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Wibond_Wibond
+ *
+ * @copyright  Copyright (c) 2021 Wibond. (https://www.wibond.com.ar/)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="wibond" frontName="wibond">
+            <module name="Wibond_Wibond"/>
+        </route>
+    </router>
+</config>

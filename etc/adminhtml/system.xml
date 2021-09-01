@@ -1,0 +1,98 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Wibond_Wibond
+ *
+ * @copyright  Copyright (c) 2021 Wibond. (https://www.wibond.com.ar/)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment" sortOrder="1000" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+            <group id="wibond" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                <label>Wibond</label>
+                <field id="active" type="select" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1"
+                    translate="label">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" type="text" sortOrder="20" showInWebsite="1" showInStore="1" showInDefault="1"
+                    translate="label">
+                    <label>Title</label>
+                </field>
+                <field id="instructions" type="textarea" sortOrder="25" showInWebsite="1" showInStore="1"
+                    showInDefault="1"
+                    translate="label">
+                    <label>Instructions</label>
+                </field>
+                <field id="resume_title" type="text" sortOrder="20" showInWebsite="1" showInStore="1" showInDefault="1"
+                    translate="label">
+                    <comment>This title will appear on the history transaction of wibond. %1 will transform in order id number.</comment>
+                    <label>Resume Title</label>
+                </field>
+                <field id="order_status" type="select" sortOrder="30" showInWebsite="1" showInStore="1"
+                    showInDefault="1"
+                    translate="label">
+                    <label>New Order Status</label>
+                    <source_model>Wibond\Wibond\Model\Config\Source\Order\Status\PendingPayment</source_model>
+                </field>
+                <field id="status_pay" type="select" sortOrder="32" showInWebsite="1" showInStore="1" showInDefault="1"
+                    translate="label">
+                    <label>Payment has been accepted</label>
+                    <source_model>Magento\Sales\Model\Config\Source\Order\Status\Processing</source_model>
+                </field>
+                <field id="status_rejected" type="select" sortOrder="34" showInWebsite="1" showInStore="1"
+                    showInDefault="1"
+                    translate="label">
+                    <label>Payment has been rejected</label>
+                    <source_model>Magento\Sales\Model\Config\Source\Order\Status\Processing</source_model>
+                </field>
+                <field id="allowspecific" type="allowspecific" sortOrder="40" showInWebsite="1" showInStore="1"
+                    showInDefault="1" translate="label">
+                    <label>Payment from Applicable Countries</label>
+                    <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
+                </field>
+                <field id="specificcountry" type="multiselect" sortOrder="50" showInWebsite="1" showInStore="1"
+                    showInDefault="1" translate="label">
+                    <label>Payment from Applicable Countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="sort_order" type="text" sortOrder="60" showInWebsite="1" showInStore="1" showInDefault="1"
+                    translate="label">
+                    <label>Sort Order</label>
+                </field>
+                <field id="auth_secret" type="obscure" sortOrder="80" showInWebsite="1" showInStore="1"
+                    showInDefault="1" translate="label">
+                  <label>Auth Secret</label>
+                  <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+                <field id="tenant_id" type="text" sortOrder="85" showInWebsite="1" showInStore="1" showInDefault="1"
+                    translate="label">
+                    <label>Tenant ID</label>
+                </field>
+                <field id="wallet_id" type="text" sortOrder="86" showInWebsite="1" showInStore="1" showInDefault="1"
+                    translate="label">
+                    <label>Wallet ID</label>
+                </field>
+                <field id="environment" type="select" sortOrder="90" showInWebsite="1" showInStore="1" showInDefault="1"
+                    translate="label">
+                    <label>Environment</label>
+                    <source_model>Wibond\Wibond\Model\Config\Source\Environment</source_model>
+                </field>
+                <field id="debug" type="select" sortOrder="100" showInWebsite="1" showInStore="1" showInDefault="1"
+                    translate="label">
+                    <label>Debug</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="financial_plan" type="multiselect" sortOrder="10" showInWebsite="1" showInStore="1"
+                    showInDefault="1" translate="label">
+                    <label>Financial Plan Options</label>
+                    <source_model>Wibond\Wibond\Model\Config\Source\FinancialPlans</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
