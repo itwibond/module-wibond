@@ -52,7 +52,7 @@ class Config extends MagentoConfig
     {
         return $this->getEnvironment() === Environment::ENV_PRODUCTION ?
             'https://api.wibond.com.ar/api/v1' :
-            'https://api-staging.wibond.com.ar/api/v1';
+            'https://api-preprod.wibond.com.ar/api/v1';
     }
 
     /**
@@ -78,7 +78,7 @@ class Config extends MagentoConfig
     {
         $tenantId = $this->getValue('tenant_id');
         $walletId = $this->getValue('wallet_id');
-        return $this->getBaseUrl() . "/payment-link/create-payment-link/${tenantId}/wallet/${walletId}";
+        return $this->getBaseUrl() . "/payment-link/anonymous/create-payment-link/${tenantId}/wallet/${walletId}";
     }
 
     /**
