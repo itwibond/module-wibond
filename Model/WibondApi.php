@@ -18,9 +18,9 @@ use Wibond\Wibond\Config\Config;
 
 class WibondApi
 {
-    const FINANCIAL_OPTIONS_KEY = 'planOptions';
+    const FINANCIAL_OPTIONS_KEY = 'plans';
     const FINANCIAL_FREQUENCY_KEY = 'frequencyOptions';
-    const FINANCIAL_FEE_KEY = 'feeOptions';
+    const FINANCIAL_FEE_KEY = 'fees';
 
     /**
      * @var CurlFactory
