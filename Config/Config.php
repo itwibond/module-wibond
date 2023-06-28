@@ -42,7 +42,7 @@ class Config extends MagentoConfig
      */
     public function getFinancialOptionsUrl(): string
     {
-        return $this->getBaseUrl() . '/payment-link/financial-plan-options';
+        return $this->getBaseUrl() . "/payment-link/anonymous/plans-profile/tenant/${tenantId}/wallet/${walletId}";
     }
 
     /**
