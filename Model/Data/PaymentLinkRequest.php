@@ -166,8 +166,7 @@ class PaymentLinkRequest extends DataObject implements PaymentLinkRequestInterfa
     }
 
     /**
-     * @param array $keys
-     * @return array
+     * @inheritDoc
      */
     public function toArray(array $keys = []): array
     {

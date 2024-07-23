@@ -39,7 +39,7 @@ class ConfigProvider implements ConfigProviderInterface
     }
 
     /**
-     * @return \array[][]
+     * @inheritDoc
      */
     public function getConfig(): array
     {

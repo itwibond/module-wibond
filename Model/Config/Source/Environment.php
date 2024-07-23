@@ -14,10 +14,12 @@ use Magento\Framework\Data\OptionSourceInterface;
 
 class Environment implements OptionSourceInterface
 {
-    const ENV_TESTING = 'testing';
-    const ENV_PRODUCTION = 'production';
+    public const ENV_TESTING = 'testing';
+    public const ENV_PRODUCTION = 'production';
 
     /**
+     * Return option arrau
+     *
      * @return array
      */
     public function toArray()
@@ -28,6 +30,8 @@ class Environment implements OptionSourceInterface
     }
 
     /**
+     * Return option array
+     *
      * @return array[]
      */
     public function toOptionArray()

@@ -12,4 +12,7 @@ namespace Wibond\Wibond\Block;
 
 use Magento\Payment\Block\Info as MagentoInfo;
 
-class Info extends MagentoInfo {}
+class Info extends MagentoInfo
+{
+
+}

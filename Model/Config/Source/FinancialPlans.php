@@ -30,6 +30,8 @@ class FinancialPlans implements OptionSourceInterface
     }
 
     /**
+     * Return options array
+     *
      * @return array
      */
     public function toArray()
@@ -40,7 +42,9 @@ class FinancialPlans implements OptionSourceInterface
     }
 
     /**
-     * @return array[]
+     * Return plan options array
+     *
+     * @return array
      */
     public function toOptionArray()
     {
@@ -54,4 +58,3 @@ class FinancialPlans implements OptionSourceInterface
         return $items;
     }
 }
-

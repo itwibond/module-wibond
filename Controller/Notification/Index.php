@@ -110,6 +110,8 @@ class Index implements HttpPostActionInterface, HttpGetActionInterface, CsrfAwar
     }
 
     /**
+     * Execute
+     *
      * @throws LocalizedException
      */
     public function execute()
