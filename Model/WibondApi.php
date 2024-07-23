@@ -18,9 +18,9 @@ use Wibond\Wibond\Config\Config;
 
 class WibondApi
 {
-    const FINANCIAL_OPTIONS_KEY = 'plans';
-    const FINANCIAL_FREQUENCY_KEY = 'frequencyOptions';
-    const FINANCIAL_FEE_KEY = 'fees';
+    public const FINANCIAL_OPTIONS_KEY = 'plans';
+    public const FINANCIAL_FREQUENCY_KEY = 'frequencyOptions';
+    public const FINANCIAL_FEE_KEY = 'fees';
 
     /**
      * @var CurlFactory
@@ -53,6 +53,8 @@ class WibondApi
     }
 
     /**
+     * Get plan options
+     *
      * @return array
      */
     public function getPlanOptions(): array
@@ -62,16 +64,22 @@ class WibondApi
     }
 
     /**
+     * Get financial plan options
+     *
      * @return array|bool|float|int|mixed|string|null
      */
     public function getFinancialPlanOptions()
     {
         $curlClient = $this->getCurlClient();
         $curlClient->get($this->config->getFinancialOptionsUrl());
-        return $this->serializer->unserialize($curlClient->getBody());
+        return $curlClient->getBody()
+            ? $this->serializer->unserialize($curlClient->getBody())
+            : null;
     }
 
     /**
+     * Get Curl client
+     *
      * @return Curl
      */
     protected function getCurlClient(): Curl
@@ -83,6 +91,8 @@ class WibondApi
     }
 
     /**
+     * Get frequency options
+     *
      * @return array|mixed|string
      */
     public function getFrequencyOptions()
@@ -92,6 +102,8 @@ class WibondApi
     }
 
     /**
+     * Get fee options
+     *
      * @return array|mixed|string
      */
     public function getFeeOptions()
@@ -101,6 +113,8 @@ class WibondApi
     }
 
     /**
+     * Get pay url
+     *
      * @param PaymentLinkRequestInterface $paymentLinkRequest
      * @return array|bool|float|int|mixed|string|null
      */

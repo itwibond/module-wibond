@@ -18,7 +18,7 @@ use Wibond\Wibond\Model\Payment\Wibond;
 
 class Config extends MagentoConfig
 {
-    const KEY_WIBOND_LINK_ID = 'wibond_link_id';
+    public const KEY_WIBOND_LINK_ID = 'wibond_link_id';
 
     /**
      * @var EncryptorInterface
@@ -26,6 +26,8 @@ class Config extends MagentoConfig
     private EncryptorInterface $encryptor;
 
     /**
+     * @constructor
+     *
      * @param ScopeConfigInterface $scopeConfig
      * @param EncryptorInterface $encryptor
      */
@@ -38,14 +40,21 @@ class Config extends MagentoConfig
     }
 
     /**
+     * Get Financial Options Url
+     *
      * @return string
      */
     public function getFinancialOptionsUrl(): string
     {
-        return $this->getBaseUrl() . "/payment-link/anonymous/plans-profile/tenant/${tenantId}/wallet/${walletId}";
+        $tenantId = $this->getValue('tenant_id');
+        $walletId = $this->getValue('wallet_id');
+        $url = $this->getBaseUrl() . "/payment-link/anonymous/plans-profile/tenant/%s/wallet/%s";
+        return sprintf($url, $tenantId, $walletId);
     }
 
     /**
+     * Get Base Url
+     *
      * @return string
      */
     public function getBaseUrl(): string
@@ -56,6 +65,8 @@ class Config extends MagentoConfig
     }
 
     /**
+     * Get Debug
+     *
      * @return string
      */
     public function getDebug(): string
@@ -64,6 +75,8 @@ class Config extends MagentoConfig
     }
 
     /**
+     * Get Environment
+     *
      * @return mixed|null
      */
     public function getEnvironment()
@@ -72,16 +85,21 @@ class Config extends MagentoConfig
     }
 
     /**
+     * Get Link Payment Url
+     *
      * @return string
      */
     public function getLinkPaymentUrl(): string
     {
         $tenantId = $this->getValue('tenant_id');
         $walletId = $this->getValue('wallet_id');
-        return $this->getBaseUrl() . "/payment-link/anonymous/create-payment-link/${tenantId}/wallet/${walletId}";
+        $url = $this->getBaseUrl() . "/payment-link/anonymous/create-payment-link/%s/wallet/%s";
+        return sprintf($url, $tenantId, $walletId);
     }
 
     /**
+     * Get Payment Options
+     *
      * @return array
      */
     public function getPaymentOptions(): array
@@ -90,6 +108,8 @@ class Config extends MagentoConfig
     }
 
     /**
+     * Get Auth Secret
+     *
      * @return string
      */
     public function getAuthSecret(): string
@@ -98,6 +118,8 @@ class Config extends MagentoConfig
     }
 
     /**
+     * Get Status Rejected
+     *
      * @return string
      */
     public function getStatusRejected(): string
@@ -106,6 +128,8 @@ class Config extends MagentoConfig
     }
 
     /**
+     * Get Status Pay
+     *
      * @return string
      */
     public function getStatusPay(): string

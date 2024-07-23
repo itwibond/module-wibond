@@ -39,9 +39,12 @@ class Logger
     }
 
     /**
-     * @param $message
+     * Log
+     *
+     * @param string|array $message
+     * @param array $context
      */
-    public function log($message, array $context = array())
+    public function log($message, array $context = [])
     {
         if ($this->config->getDebug()) {
             $this->loggerInterface->info($message, $context);

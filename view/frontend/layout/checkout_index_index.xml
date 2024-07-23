@@ -25,8 +25,9 @@
                                                         <item name="renders" xsi:type="array">
                                                             <item name="children" xsi:type="array">
                                                                 <item name="wibond" xsi:type="array">
-                                                                    <item name="component"
-                                                                        xsi:type="string">Wibond_Wibond/js/view/payment/wibond</item>
+                                                                    <item name="component" xsi:type="string">
+                                                                        Wibond_Wibond/js/view/payment/wibond
+                                                                    </item>
                                                                     <item name="methods" xsi:type="array">
                                                                         <item name="wibond" xsi:type="array">
                                                                             <item name="isBillingAddressRequired"

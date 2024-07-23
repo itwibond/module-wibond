@@ -39,4 +39,3 @@ class Index implements HttpPostActionInterface
         return $this->resultPageFactory->create();
     }
 }
-

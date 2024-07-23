@@ -105,6 +105,8 @@ class Index implements HttpGetActionInterface
     }
 
     /**
+     * Execute
+     *
      * @return ResultInterface
      */
     public function execute()

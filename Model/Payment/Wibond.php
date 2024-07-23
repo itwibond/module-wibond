@@ -14,10 +14,10 @@ use Magento\Payment\Model\Method\Adapter;
 
 class Wibond extends Adapter
 {
-    const CODE = 'wibond';
-    const WIBOND_STATUS_IN_PROGRESS = 'IN_PROGRESS';
-    const WIBOND_STATUS_COMPLETED = 'COMPLETED';
-    const WIBOND_STATUS_PENDING = 'PENDING';
+    public const CODE = 'wibond';
+    public const WIBOND_STATUS_IN_PROGRESS = 'IN_PROGRESS';
+    public const WIBOND_STATUS_COMPLETED = 'COMPLETED';
+    public const WIBOND_STATUS_PENDING = 'PENDING';
 
     /**
      * @inheritdoc
@@ -35,13 +35,16 @@ class Wibond extends Adapter
         return (bool) true;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function isGateway()
     {
         return (bool) true;
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function initialize($paymentAction, $stateObject)
     {

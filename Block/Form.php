@@ -12,4 +12,7 @@ namespace Wibond\Wibond\Block;
 
 use Magento\Payment\Block\Form as MagentoForm;
 
-class Form extends MagentoForm {}
+class Form extends MagentoForm
+{
+
+}
