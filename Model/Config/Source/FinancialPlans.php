@@ -34,7 +34,7 @@ class FinancialPlans implements OptionSourceInterface
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return array_map(function ($item) {
             return [$item['value'] => $item['label']];
@@ -46,13 +46,14 @@ class FinancialPlans implements OptionSourceInterface
      *
      * @return array
      */
-    public function toOptionArray()
+    public function toOptionArray(): array
     {
         $items = [];
-        foreach ($this->wibondApi->getPlanOptions() as $option) {
+        $options = $this->wibondApi->getPlanOptions();
+        foreach ($options as $option) {
             $items[] = [
                 'value' => $option['id'],
-                'label' => $option['name'],
+                'label' => $option['name'] ?? '(' . $option['code'] . ')',
             ];
         }
         return $items;
