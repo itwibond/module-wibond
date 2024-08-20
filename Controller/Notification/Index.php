@@ -117,6 +117,7 @@ class Index implements HttpPostActionInterface, HttpGetActionInterface, CsrfAwar
     public function execute()
     {
         $data = $this->request->getBodyParams();
+
         $this->logger->log('Notification response', $data);
 
         $orderId = $data['externalId'];
@@ -140,7 +141,8 @@ class Index implements HttpPostActionInterface, HttpGetActionInterface, CsrfAwar
         $payment = $order->getPayment();
 
         $paymentLinkId = $payment->getAdditionalInformation(Config::KEY_WIBOND_LINK_ID);
-        if ($paymentLinkId !== $data['relatedPaymentLinkId']) {
+        $relatedPaymentLinkId = (integer)$data['relatedPaymentLinkId'];
+        if ($paymentLinkId !== $relatedPaymentLinkId) {
             $this->logger->log('Invalid payment link id', [$paymentLinkId]);
             throw new LocalizedException(__('Invalid payment link id'));
         }
